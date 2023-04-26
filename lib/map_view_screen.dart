@@ -10,39 +10,19 @@ class MapViewScreen extends StatefulWidget {
 }
 
 class _MapViewScreenState extends State<MapViewScreen> {
-  Position? currentLocation;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Map View'),
+        title: const Text('Map View'),
       ),
-      body: Center(
-        child: Text(currentLocation.toString()),
+      body: GoogleMap(
+        initialCameraPosition: CameraPosition(
+          target: LatLng(23.81248451251643, 90.35984537003183),
+          zoom: 18,
+        ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          //location permission
-          LocationPermission permission = await Geolocator.requestPermission();
-          if (permission == LocationPermission.always ||
-              permission == LocationPermission.whileInUse) {
-            //current location fetch
-            currentLocation = await Geolocator.getCurrentPosition();
-            print(currentLocation);
-            setState(() {});
-          }else{
-            print('Permission not allowed');
-          }
-        },
-        child: Icon(Icons.location_on),
-      ),
-      // body:
-      // GoogleMap(
-      //   initialCameraPosition: CameraPosition(
-      //     target: LatLng(23.793895737073488, 90.40448580672911)
-      //   ),
-      // ),
     );
   }
 }

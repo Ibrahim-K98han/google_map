@@ -17,6 +17,8 @@ class _MapViewScreenState extends State<MapViewScreen> {
         title: const Text('Map View'),
       ),
       body: GoogleMap(
+        myLocationButtonEnabled: true,
+        myLocationEnabled: true,
         zoomControlsEnabled: false,
         onTap: (LatLng position) {
           print(position);
@@ -62,21 +64,22 @@ class _MapViewScreenState extends State<MapViewScreen> {
               strokeColor: Colors.pink)
         },
         //polygon add
-        polygons: {
-          Polygon(
-            polygonId: PolygonId('abc'),
-            visible: true,
-            fillColor: Colors.teal.shade100,
-            strokeWidth: 2,
-            strokeColor: Colors.teal,
-            points: [
-              LatLng(23.8102428190993, 90.355999879539),
-              LatLng(23.81352244112977, 90.35701576620339),
-              LatLng(23.813421832931468, 90.35828981548548)
 
-            ]
-          )
-        },
+        // polygons: {
+        //   Polygon(
+        //     polygonId: PolygonId('abc'),
+        //     visible: true,
+        //     fillColor: Colors.teal.shade100,
+        //     strokeWidth: 2,
+        //     strokeColor: Colors.teal,
+        //     points: [
+        //       LatLng(23.8102428190993, 90.355999879539),
+        //       LatLng(23.81352244112977, 90.35701576620339),
+        //       LatLng(23.813421832931468, 90.35828981548548)
+        //
+        //     ]
+        //   )
+        // },
         initialCameraPosition: CameraPosition(
             target: LatLng(23.811972774158328, 90.35684009419076),
             zoom: 17,
